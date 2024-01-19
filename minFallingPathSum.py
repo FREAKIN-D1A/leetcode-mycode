@@ -1,25 +1,14 @@
-def minFallingPathSum(matrix) -> int:
-    rows = len(matrix)
-    cols = len(matrix[0])
-    minSum = min(matrix[0])
-    col = matrix[0].index(minSum)
-    currentRow = 1
-    while currentRow < rows:
-        toAdd = min(
-            [
-                matrix[currentRow][col],
-                matrix[currentRow][col + 1 if col < cols - 1 else col],
-                matrix[currentRow][col - 1 if col > 0 else col],
-            ]
-        )
-        col = matrix[currentRow].index(toAdd)
-        currentRow += 1
-        minSum += toAdd
-        # pass
-    return minSum
-    # pass
-
-
-matrix = [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
-ans = minFallingPathSum(matrix)
-print(ans)
+def minFallingPathSum(m: List[List[int]]) -> int:
+    for row in range(1, len(m)):
+        for col in range(len(m)):
+            if col == 0:
+                m[row][col] = m[row][col] + min(m[row - 1][col], m[row - 1][col + 1])
+            elif col == len(m) - 1:
+                m[row][col] = m[row][col] + min(m[row - 1][col], m[row - 1][col - 1])
+            else:
+                m[row][col] = m[row][col] + min(
+                    m[row - 1][col], m[row - 1][col + 1], m[row - 1][col - 1]
+                )
+    ans = min(m[-1])
+    del m
+    return ans

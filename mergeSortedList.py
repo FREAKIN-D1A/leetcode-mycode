@@ -4,7 +4,6 @@ class ListNode:
         self.next = next
         pass
 
-
 def mergeTwoLists(list1, list2):
     dummy = ListNode()
     current = dummy

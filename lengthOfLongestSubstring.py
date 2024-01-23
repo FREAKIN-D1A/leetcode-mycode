@@ -17,7 +17,6 @@ print(lengthOfLongestSubstring("abcabcbb"))  # Output: 3
 print(lengthOfLongestSubstring("bbbbb"))  # Output: 1
 print(lengthOfLongestSubstring("pwwkew"))  # Output: 3
 
-
 # ---------------------------------------------------------
 
 """
